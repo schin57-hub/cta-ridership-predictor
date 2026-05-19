@@ -1,0 +1,47 @@
+======================================================================
+CTA Ridership Predictor — Training
+======================================================================
+
+[1/5] Loading features...
+  1,247,456 rows, 38 columns
+  Date range: 2002-01-01 -> 2026-03-31
+
+[2/5] Time-based train/test split (last 6 months = test)...
+  Train: 1,221,248 rows, 2002-01-01 -> 2025-09-30
+  Test : 26,208 rows, 2025-10-01 -> 2026-03-31
+
+[3/5] Evaluating baselines + models on held-out test set...
+    training Ridge...
+    training XGBoost...
+
+[4/5] Test-set results:
+                                 MAE    RMSE  MAPE_%    R2
+Baseline: Yesterday's value   466.47  920.94   30.44  0.81
+Baseline: 7-day rolling mean  514.63  898.50   40.56  0.82
+Linear (Ridge)                307.96  651.07   30.97  0.90
+XGBoost                       199.54  510.57   13.56  0.94
+
+[5/5] Time-series cross-validation for XGBoost (5 folds)...
+ fold  n_train  n_test    MAE   RMSE  MAPE_%   R2
+    1   203543  203541 206.14 497.67   19.90 0.97
+    2   407084  203541 210.44 476.06    7.63 0.98
+    3   610625  203541 223.79 532.83   13.84 0.98
+    4   814166  203541 176.28 430.15   28.20 0.98
+    5  1017707  203541 167.52 389.87   11.95 0.96
+
+  Mean CV MAPE: 16.30%  (std: 7.98%)
+
+Saved models -> /Users/saisumanth/Downloads/cta-ridership-predictor/models
+
+Top 10 most important features:
+           feature  importance
+       rides_lag_7    0.457057
+      rides_lag_14    0.263682
+      rides_lag_28    0.149946
+              dt_W    0.026365
+       rides_lag_1    0.020076
+              dt_U    0.015278
+ rides_roll_mean_7    0.012496
+        is_holiday    0.007200
+              dt_A    0.003657
+rides_roll_mean_28    0.003531

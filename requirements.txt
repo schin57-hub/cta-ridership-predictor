@@ -1,0 +1,8 @@
+pandas>=2.0
+numpy>=1.24
+scikit-learn>=1.3
+xgboost>=2.0
+streamlit>=1.30
+shap>=0.44
+holidays>=0.40
+pyarrow>=14.0
