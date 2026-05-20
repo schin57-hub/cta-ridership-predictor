@@ -1,3 +1,19 @@
+## Quick start (Docker)
+
+No Python setup needed. Just Docker.
+
+```bash
+git clone https://github.com/schin57-hub/cta-ridership-predictor.git
+cd cta-ridership-predictor
+docker compose up
+```
+
+Open **http://localhost:8501** — dashboard loads with all 144 stations.
+
+To stop: `Ctrl+C`
+
+---
+
 # CTA L Ridership Predictor 🚇
 
 Daily ridership forecasts for every Chicago 'L' train station, built on 23+ years
